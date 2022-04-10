@@ -29,15 +29,33 @@ def get_teams_stats():
     teams = data["league"]["standard"]["regularSeason"]["teams"]
 
     teams = list(filter(lambda x: x["name"] != "Team", teams))
+    teams.sort(key = lambda x: int(x["ppg"]["rank"]))
 
     for team in teams:
         team_name = team["name"]
         nickname = team["nickname"]
-        ppg = team["ppg"]
+        ppg_avg = team["ppg"]["rank"]
+        rank = team["ppg"]["rank"]
 
-        print(f"{team_name} - {nickname} | PPG: {ppg}")
-
-
-print(get_teams_stats())
+        print(f"RANK: {rank} | {team_name} - {nickname} | PPG Médio: {ppg_avg}")
 
 
+
+
+
+
+
+while True:
+    print("###################################################\n")
+    print("Seja BEM VINDO!!!! DADOS NBA | Rosivaldo de Jesus\n")
+    print("1 - Ver jogos\n")
+    print("2 - Ver Times por PPG\n")
+
+    user_choice = input("Opção: ")
+
+    if user_choice == "1":
+        get_currentScoreboard()
+    if user_choice == "2":
+        get_teams_stats()
+    else:
+        continue
