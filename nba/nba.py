@@ -23,6 +23,7 @@ def get_currentScoreboard():
         print(f"SCORE: {home_team['score']} X {away_team['score']}")
         print(f"{clock} - {period['current']}\n")
 
+
 def get_teams_stats():
     stats = get_links()["leagueTeamStatsLeaders"]
     data = get(BASE_URL+stats).json()
@@ -38,11 +39,6 @@ def get_teams_stats():
         rank = team["ppg"]["rank"]
 
         print(f"RANK: {rank} | {team_name} - {nickname} | PPG Médio: {ppg_avg}")
-
-
-
-
-
 
 
 while True:
