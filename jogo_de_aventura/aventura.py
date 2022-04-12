@@ -7,29 +7,23 @@
 # irá conseguir
 class JogoDeAventura:
     def __init__(self) -> None:
-        self.pergunta1 = 'Você nasceu no norte ou sul ? (n\s)' #norte: LadoA, sul:LadoB
-        self.pergunta2 = 'Você prefere a espada ou escudo? (espada/escudo) ' #espada: LadoA, escudo:LadoB
-        self.pergunta3 = 'Qual a sua especialidade ? (frente/tatico) ' #linha de frente: LadoA, tático:LadoB
-
-        self.finalHistoria1 =  'Você será um herói na linha de frente!'
-        self.finalHistoria2 =  'Você será um herói protegendo todas as nossas tropas!'
-        self.finalHistoria3 =  'Você será um herói nas sombras!'
-        self.finalHistoria4 =  'Você não é capaz de lutar nessa batalha!'
+        self.perguntas ={
+             'p1':'Você nasceu no norte ou sul ? (n\s) ', #norte: LadoA, sul:LadoB
+             's':'Qual a sua especialidade ? (frente/tatico) ', #espada: LadoA, escudo:LadoB
+             'n':'Você prefere a espada ou escudo? (espada/escudo) ' #linha de frente: LadoA, tático:LadoB
+        }
+        self.respostas ={
+             'n+espada':'Você será um herói na linha de frente!',
+             'n+escudo':'Você será um herói protegendo todas as nossas tropas!',
+             's+frente':'Você será um herói nas sombras!',
+             's+tatico':'Você não é capaz de lutar nessa batalha!'
+             }
 
     def Iniciar(self):
-        resposta1 = input(self.pergunta1)
-        if resposta1 == 'n':
-            resposta1B = input(self.pergunta2)
-            if resposta1B == 'espada':
-                print(self.finalHistoria1)
-            if resposta1B == ' escudo':
-                print(self.finalHistoria2)
-        if resposta1 == 's':
-            resposta1B = input(self.pergunta3)
-            if resposta1B == 'frente':
-                print(self.finalHistoria3)
-            if resposta1B == 'tatico':
-                print(self.finalHistoria4)
+        resposta1= input(self.perguntas['p1']).lower()
+        if resposta1 in ('s','n'):
+        	resposta = input(self.perguntas[resposta1])
+        	print(self.respostas[f'{resposta1}+{resposta}'])
 
 jogo = JogoDeAventura()
-jogo.Iniciar()
+jogo.Iniciar() 
